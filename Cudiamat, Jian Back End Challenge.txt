@@ -1,0 +1,74 @@
+/*
+    JAVASCRIPT VANILLA
+    By: Jian Raphael R. Cudiamat
+*/
+
+// Car Rental Problem
+var car_prices = [1000, 800, 800];
+var result;
+var carTypes = ["S", "M", "L"]; 
+
+while(true){
+    var car_seat = prompt("Please input number (seat): ");
+    var prices = [];
+
+    for(var i = 0; i < car_prices.length; i++){
+        result = car_seat * car_prices[i];
+        prices.push(result);
+    }
+
+    var optimized_cost = prices.indexOf(Math.min(...prices));
+
+    console.log(carTypes[optimized_cost] + " X " + car_seat);
+    console.log("Total = PHP " + prices[optimized_cost]);
+
+    var user_choice = prompt("Would you still want to rent a car? Y or N");
+    if(user_choice == 'N' || user_choice == 'n'){
+        break;
+    }
+}
+
+// OPTIONAL : Car Rental Problem ====================================================================
+
+var car_prices = [];
+var car_types = ["S", "M", "L"]; 
+var result;
+
+while(true){
+    // Retrieves user input for each car type (seat_capacity and total price), then divide car price with seat capacity to store in car prices array
+    for(var i = 0; i < car_types.length; i++){
+        var price_per_seat = 0;
+        var CarType = car_types[i];
+        var seat_capacity = prompt(`Please enter seat capacity for a ${CarType} car (PHP):`);
+        var price = prompt(`Please enter cost for a ${CarType} car (PHP)`);    
+
+        price_per_seat = price / seat_capacity;
+        car_prices.push(price_per_seat);    
+    }
+
+    console.log(car_prices);
+
+    // Asks user for number of seats
+    var car_seat = prompt("Please input number (seat): ");
+    var prices = [];
+
+    // Iterates through car prices multiplied with user input number of seats
+    for(var i = 0; i < car_prices.length; i++){
+        result = car_seat * car_prices[i];
+        prices.push(result);
+    }
+
+    // Finds most optimal car size and price depending on the number of car seat on the array
+    let optimized_cost = car_prices.indexOf(Math.min(...car_prices));
+
+    console.log(car_types[optimized_cost] + " X " + car_seat);
+    console.log("Total = PHP " + prices[optimized_cost]);
+
+    // Asks user again if user still wants to rent a car
+    var user_choice = prompt("Would you still want to rent a car? Y or N");
+    if(user_choice == 'N' || user_choice == 'n'){
+        break;
+    }
+
+    car_prices = [];
+}
